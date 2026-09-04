@@ -297,64 +297,59 @@ playBtn.ontouchstart=function(e){ if(a<7){ e.preventDefault(); moveBtn(); } };
 
 
 
+
 <!-- BEAUTIFUL CERTIFICATE BUTTON -->
 <div style="text-align:center; margin:40px 20px;">
-  <button id="certBtn" style="background:#2d1b4e; color:#f9e076; padding:15px 30px; border:2px solid #d4af37; border-radius:100px; font-weight:800; font-size:15px; letter-spacing:1px; cursor:pointer; box-shadow:0 6px 20px rgba(45,27,78,0.3);">
+  <button id="certBtn" style="background:#2d1b4e; color:#f9e076; padding:15px 30px; border:2px solid #d4af37; border-radius:100px; font-weight:800; font-size:15px; letter-spacing:1px; cursor:pointer;">
     📜 CLAIM YOUR 19 CERTIFICATE
   </button>
 </div>
 
-<div id="certModal" style="display:none; position:fixed; inset:0; background:rgba(20,10,40,0.9); backdrop-filter:blur(10px); z-index:9999; align-items:center; justify-content:center; padding:16px; overflow-y:auto;">
-  <div style="max-width:380px; width:100%; background:#f5f1e8; position:relative; box-shadow:0 0 0 8px #2d1b4e, 0 0 0 10px #d4af37, 0 20px 60px rgba(0,0,0,0.5); border-radius:2px; padding:36px 28px 28px; text-align:center;">
+<div id="certModal" style="display:none; position:fixed; inset:0; background:rgba(20,10,40,0.95); z-index:9999; flex-direction:column; align-items:center; justify-content:center; padding:12px; overflow-y:auto;">
+  
+  <!-- Certificate Card - now fits screen -->
+  <div style="width:92%; max-width:340px; background:#f5f1e8; position:relative; box-shadow:0 0 0 6px #2d1b4e, 0 0 0 8px #d4af37; border-radius:2px; padding:28px 22px 20px; text-align:center; flex-shrink:0;">
     
-    <!-- Gold corner ornaments -->
-    <div style="position:absolute; top:10px; left:10px; width:40px; height:40px; border-top:2px solid #d4af37; border-left:2px solid #d4af37;"></div>
-    <div style="position:absolute; top:10px; right:10px; width:40px; height:40px; border-top:2px solid #d4af37; border-right:2px solid #d4af37;"></div>
-    <div style="position:absolute; bottom:10px; left:10px; width:40px; height:40px; border-bottom:2px solid #d4af37; border-left:2px solid #d4af37;"></div>
-    <div style="position:absolute; bottom:10px; right:10px; width:40px; height:40px; border-bottom:2px solid #d4af37; border-right:2px solid #d4af37;"></div>
+    <div style="position:absolute; top:8px; left:8px; width:28px; height:28px; border-top:2px solid #d4af37; border-left:2px solid #d4af37;"></div>
+    <div style="position:absolute; top:8px; right:8px; width:28px; height:28px; border-top:2px solid #d4af37; border-right:2px solid #d4af37;"></div>
+    <div style="position:absolute; bottom:8px; left:8px; width:28px; height:28px; border-bottom:2px solid #d4af37; border-left:2px solid #d4af37;"></div>
+    <div style="position:absolute; bottom:8px; right:8px; width:28px; height:28px; border-bottom:2px solid #d4af37; border-right:2px solid #d4af37;"></div>
 
-    <h2 style="font-family:'Times New Roman',serif; font-size:22px; color:#2d1b4e; font-weight:400; margin:0; line-height:1.2;">Certificate of</h2>
-    <h2 style="font-family:'Times New Roman',serif; font-size:26px; color:#2d1b4e; font-weight:700; margin:2px 0 14px; font-style:italic;">Officially Being 19</h2>
+    <h2 style="font-family:Georgia,serif; font-size:18px; color:#2d1b4e; font-weight:400; margin:0;">Certificate of</h2>
+    <h2 style="font-family:Georgia,serif; font-size:22px; color:#2d1b4e; font-weight:700; margin:2px 0 10px; font-style:italic;">Officially Being 19</h2>
     
-    <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin:16px 0;">
-      <div style="height:1px; width:50px; background:#d4af37;"></div>
-      <div style="color:#d4af37; font-size:14px;">✦</div>
-      <div style="height:1px; width:50px; background:#d4af37;"></div>
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin:12px 0;">
+      <div style="height:1px; width:40px; background:#d4af37;"></div><div style="color:#d4af37; font-size:10px;">✦</div><div style="height:1px; width:40px; background:#d4af37;"></div>
     </div>
 
-    <h1 style="font-family:'Brush Script MT','Segoe Script',cursive; font-size:58px; color:#e07a7a; margin:12px 0; font-weight:400; transform:rotate(-3deg);">Reina</h1>
+    <h1 style="font-family:cursive; font-size:46px; color:#e07a7a; margin:10px 0; font-weight:400; transform:rotate(-2deg);">Reina</h1>
 
-    <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin:18px 0;">
-      <div style="height:1px; width:50px; background:#d4af37;"></div>
-      <div style="color:#d4af37; font-size:14px;">✦</div>
-      <div style="height:1px; width:50px; background:#d4af37;"></div>
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin:12px 0;">
+      <div style="height:1px; width:40px; background:#d4af37;"></div><div style="color:#d4af37; font-size:10px;">✦</div><div style="height:1px; width:40px; background:#d4af37;"></div>
     </div>
 
-    <p style="font-family:Georgia,serif; font-size:15px; color:#2d1b4e; line-height:1.7; margin:0 auto; max-width:300px;">
+    <p style="font-family:Georgia,serif; font-size:13.5px; color:#2d1b4e; line-height:1.65; margin:0 auto; max-width:280px;">
       This certifies that the above named person has successfully completed nineteen years of talking to strangers, over-caring about everyone around her, and being far too likeable for her own good.
     </p>
 
-    <p style="font-family:Georgia,serif; font-size:14px; color:#5a3d8a; font-style:italic; margin:26px 0 30px;">...proud in the best possible way.</p>
+    <p style="font-family:Georgia,serif; font-size:13px; color:#5a3d8a; font-style:italic; margin:18px 0 20px;">...proud in the best possible way.</p>
 
-    <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin:20px 0 28px;">
-      <div style="height:1px; width:80px; background:#d4af37;"></div>
-      <div style="color:#d4af37; font-size:10px;">❧</div>
-      <div style="height:1px; width:80px; background:#d4af37;"></div>
-    </div>
+    <div style="height:1px; background:linear-gradient(90deg, transparent, #d4af37, transparent); margin:16px 0;"></div>
 
-    <div style="display:flex; justify-content:space-between; align-items:end; text-align:left;">
-      <div>
-        <div style="font-size:12px; color:#2d1b4e; font-family:Georgia,serif;">Issued:</div>
-        <div style="font-size:13px; color:#2d1b4e; font-family:Georgia,serif;">today, obviously</div>
+    <div style="display:flex; justify-content:space-between; align-items:end; margin-top:14px;">
+      <div style="text-align:left;">
+        <div style="font-size:11px; color:#2d1b4e; font-family:Georgia,serif;">Issued:</div>
+        <div style="font-size:12px; color:#2d1b4e; font-family:Georgia,serif;">today, obviously</div>
       </div>
-      <div style="text-align:right;">
-        <div style="font-family:'Brush Script MT',cursive; font-size:32px; color:#111; transform:rotate(-5deg); line-height:1;">Lewy</div>
-      </div>
+      <div style="font-family:cursive; font-size:26px; color:#111; transform:rotate(-4deg);">Lewy</div>
     </div>
   </div>
-  <div style="display:flex; gap:10px; justify-content:center; margin:20px 0 0;">
-  <a id="saveCert" href="assets/certificate.png" download="Reina-19-Certificate.png" style="background:#d4af37; color:#2d1b4e; padding:12px 22px; border-radius:100px; font-weight:800; font-size:12px; letter-spacing:1px; text-decoration:none; display:inline-block;">💾 SAVE IMAGE</a>
-  <button id="closeCert" style="margin:20px auto 0; display:block; background:white; color:#2d1b4e; border:none; padding:12px 30px; border-radius:100px; font-weight:700; font-size:12px; letter-spacing:2px; cursor:pointer;">CLOSE ✕</button>
+
+  <!-- Buttons BELOW certificate, not overlapping -->
+  <div style="display:flex; gap:12px; margin-top:18px; flex-shrink:0;">
+    <a href="assets/certificate.png" download="Reina-19-Certificate.png" style="background:#d4af37; color:#2d1b4e; padding:12px 20px; border-radius:100px; font-weight:800; font-size:12px; text-decoration:none;">💾 SAVE IMAGE</a>
+    <button id="closeCert" style="background:white; color:#2d1b4e; border:none; padding:12px 22px; border-radius:100px; font-weight:800; font-size:12px; cursor:pointer;">CLOSE ✕</button>
+  </div>
 </div>
 
 <script>
@@ -366,6 +361,7 @@ if(closeCert) closeCert.onclick=()=>{ certModal.style.display='none'; };
 if(certModal) certModal.onclick=(e)=>{ if(e.target===certModal) certModal.style.display='none'; };
 </script>
 </body>
+
 
 
 

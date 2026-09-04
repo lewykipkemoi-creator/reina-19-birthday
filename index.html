@@ -338,6 +338,42 @@ cards.forEach(c=>{c.addEventListener('click',()=>{c.style.background='#fff7d6'; 
 </script>
 
 <!-- CERTIFICATE - CLEAN NO DOWNLOAD -->
+
+<div id="secret-final" style="display:none; text-align:center; margin:40px 20px; animation: pop 0.5s ease;">
+  <p style="font-family:Georgia,serif; color:#2d1b4e; font-size:16px; margin-bottom:12px;">You found them all. One more thing...</p>
+  <button id="secretBtn" style="background:linear-gradient(135deg,#2d1b4e,#5a3d8a); color:#f9e076; padding:16px 36px; border:2px solid #d4af37; border-radius:100px; font-weight:800; font-size:15px; cursor:pointer; box-shadow:0 8px 20px rgba(45,27,78,0.3);">🎁 ONE LAST THING →</button>
+</div>
+<style>@keyframes pop{0%{transform:scale(0.8);opacity:0}100%{transform:scale(1);opacity:1}}</style>
+<script>
+(function(){
+let tapped=new Set();
+const cards=document.querySelectorAll('.reason-card');
+const secret=document.getElementById('secret-final');
+cards.forEach((c,i)=>{
+  c.addEventListener('click',()=>{
+    tapped.add(i);
+    if(tapped.size===19){
+      secret.style.display='block';
+      secret.scrollIntoView({behavior:'smooth', block:'center'});
+      if(navigator.vibrate) navigator.vibrate([30,50,30]);
+    }
+  });
+});
+document.getElementById('secretBtn').onclick=()=>{
+  document.getElementById('certModal').style.display='flex';
+  // confetti
+  const e=new Event('click'); // trigger confetti from cert btn
+  if(window.makeConfetti) window.makeConfetti();
+  const canvas=document.getElementById('confetti-canvas');
+  if(canvas){
+    const evt = new CustomEvent('certOpen');
+    document.dispatchEvent(evt);
+  }
+  document.getElementById('certBtn').click();
+};
+})();
+</script>
+
 <div style="text-align:center; margin:50px 20px;">
   <button id="certBtn" style="background:#2d1b4e; color:#f9e076; padding:15px 30px; border:2px solid #d4af37; border-radius:100px; font-weight:800; font-size:15px; cursor:pointer;">📜 VIEW YOUR 19 CERTIFICATE</button>
 </div>

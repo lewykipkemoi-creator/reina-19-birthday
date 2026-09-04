@@ -367,6 +367,48 @@ document.getElementById('certModal').onclick=(e)=>{if(e.target.id==='certModal')
 <footer>
     Made with 💜, jokes, and questionable web-development decisions — for Reina, from Lewy.
   </footer>
+
+<!-- CONFETTI -->
+<canvas id="confetti-canvas" style="position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:10000;"></canvas>
+<script>
+(function(){
+const canvas=document.getElementById('confetti-canvas');
+const ctx=canvas.getContext('2d');
+let W,H,parts=[];
+function resize(){W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight;}
+window.addEventListener('resize',resize); resize();
+function rand(a,b){return Math.random()*(b-a)+a;}
+function makeConfetti(x,y){
+  const colors=['#f9e076','#d4af37','#2d1b4e','#e07a7a','#ffffff'];
+  for(let i=0;i<120;i++){
+    parts.push({
+      x:x||W/2, y:y||H/3,
+      vx:rand(-7,7), vy:rand(-9,-1),
+      r:rand(4,8), color:colors[Math.floor(Math.random()*colors.length)],
+      rot:rand(0,360), rotV:rand(-10,10), life:rand(80,150)
+    });
+  }
+}
+function anim(){
+  ctx.clearRect(0,0,W,H);
+  for(let i=parts.length-1;i>=0;i--){
+    let p=parts[i];
+    p.x+=p.vx; p.y+=p.vy; p.vy+=0.15; p.rot+=p.rotV; p.life--;
+    ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+    ctx.fillStyle=p.color; ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*0.6);
+    ctx.restore();
+    if(p.life<=0 || p.y>H) parts.splice(i,1);
+  }
+  requestAnimationFrame(anim);
+}
+anim();
+// fire on load
+setTimeout(()=>makeConfetti(), 800);
+// fire when cert opens
+const origBtn=document.getElementById('certBtn');
+if(origBtn){ origBtn.addEventListener('click', ()=>{ setTimeout(()=>makeConfetti(W/2, H/2), 200); }); }
+})();
+</script>
 </body>
 
 

@@ -268,5 +268,42 @@
   if(closeVideo){ closeVideo.onclick=()=>{videoModal.classList.remove('show'); reinaVideo.pause();}; }
   if(videoModal){ videoModal.onclick=e=>{ if(e.target===videoModal){videoModal.classList.remove('show'); reinaVideo.pause();}}; }
   </script>
+
+<script>
+const playBtn=document.getElementById('playBtn');
+const game=document.getElementById('game-area');
+const videoModal=document.getElementById('videoModal');
+const reinaVideo=document.getElementById('reinaVideo');
+const closeVideo=document.getElementById('closeVideo');
+let a=0;
+function playNow(){
+  videoModal.style.display='flex';
+  reinaVideo.currentTime=0;
+  reinaVideo.play();
+}
+function moveBtn(){
+  a++;
+  if(a<7){
+    playBtn.style.left=Math.random()*(game.clientWidth-90)+'px';
+    playBtn.style.top=Math.random()*(game.clientHeight-50)+'px';
+    playBtn.style.transform='none';
+  }else{
+    playBtn.textContent='Okay Play! ▶️';
+    playBtn.style.left='50%';playBtn.style.top='50%';
+    playBtn.style.transform='translate(-50%,-50%)';
+    playBtn.style.background='#2ec4b6';
+    playBtn.style.fontSize='20px';
+  }
+}
+playBtn.onclick=function(e){
+  if(a<7){ e.preventDefault(); moveBtn(); }
+  else{ playNow(); }
+};
+playBtn.ontouchstart=function(e){
+  if(a<7){ e.preventDefault(); moveBtn(); }
+};
+closeVideo.onclick=function(){ videoModal.style.display='none'; reinaVideo.pause(); };
+</script>
 </body>
+
 </html>

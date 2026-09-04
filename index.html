@@ -294,41 +294,72 @@ playBtn.ontouchstart=function(e){ if(a<7){ e.preventDefault(); moveBtn(); } };
 </script>
 
 
+
+
 <!-- CERTIFICATE BUTTON -->
-<div style="text-align:center; margin:35px 20px;">
-  <button id="certBtn" style="background:linear-gradient(135deg,#ff006e,#ffbe0b); color:white; padding:16px 28px; border:none; border-radius:30px; font-weight:800; font-size:17px; cursor:pointer; box-shadow:0 6px 20px rgba(255,0,110,0.3); letter-spacing:0.5px;">
-    📜 Claim Your Certificate
+<div style="text-align:center; margin:40px 20px;">
+  <button id="certBtn" style="background:#111; color:#fff; padding:16px 32px; border:1.5px solid #fff; border-radius:100px; font-weight:700; font-size:15px; cursor:pointer; letter-spacing:2px; position:relative; overflow:hidden; box-shadow:0 0 0 4px #111, 0 10px 30px rgba(0,0,0,0.3);">
+    ✨ UNLOCK 19 CERTIFICATE ✨
   </button>
 </div>
 
-<div id="certModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:9999; align-items:center; justify-content:center; padding:16px;">
-  <div style="background:white; max-width:380px; width:100%; border-radius:4px; padding:0; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.4);">
-    <!-- Top gold bar -->
-    <div style="height:8px; background:linear-gradient(90deg,#d4af37,#f9e076,#d4af37);"></div>
-    <div style="padding:28px 28px 22px; text-align:center; border:1px solid #eee; margin:12px; border-radius:2px;">
-      <div style="font-size:11px; letter-spacing:3px; color:#999; margin-bottom:12px;">OFFICIAL DOCUMENT</div>
-      <div style="font-size:42px; margin-bottom:8px;">🎂</div>
-      <h2 style="font-family:serif; font-weight:900; font-size:22px; color:#111; margin:0; letter-spacing:1px;">CERTIFICATE</h2>
-      <div style="width:40px; height:2px; background:#111; margin:12px auto;"></div>
-      <p style="font-size:13px; color:#666; margin:16px 0 6px; font-style:italic;">This is to certify that</p>
-      <h1 style="font-family:serif; font-size:34px; margin:0; color:#111; font-weight:400;">Reina</h1>
-      <p style="font-size:13px; color:#444; line-height:1.5; margin:16px 0;">has officially turned</p>
-      <div style="font-size:52px; font-weight:900; color:#ff006e; line-height:1; margin:5px 0;">19</div>
-      <p style="font-size:13px; color:#444; margin-top:4px;">years of pure awesomeness</p>
-      
-      <div style="margin:24px 0 0; padding-top:18px; border-top:1px solid #eee; display:flex; justify-content:space-between; align-items:end; text-align:left;">
-        <div>
-          <div style="font-size:9px; letter-spacing:2px; color:#999;">DATE</div>
-          <div style="font-size:13px; color:#111; font-weight:600;">Sept 4, 2026</div>
-        </div>
-        <div style="text-align:right;">
-          <div style="font-size:9px; letter-spacing:2px; color:#999;">APPROVED BY</div>
-          <div style="font-family:cursive; font-size:22px; color:#111; transform:rotate(-3deg);">Lewy</div>
-          <div style="width:80px; height:1px; background:#111; margin-top:2px;"></div>
+<div id="certModal" style="display:none; position:fixed; inset:0; background:rgba(10,10,15,0.92); backdrop-filter:blur(12px); z-index:9999; align-items:center; justify-content:center; padding:18px;">
+  <div style="max-width:390px; width:100%; position:relative; animation:pop .5s cubic-bezier(.175,.885,.32,1.275);">
+    <style>@keyframes pop{0%{transform:scale(.8) translateY(20px); opacity:0}100%{transform:scale(1) translateY(0); opacity:1}} @keyframes shine{0%{transform:translateX(-100%)}100%{transform:translateX(200%)}}</style>
+    
+    <!-- Card -->
+    <div style="background:radial-gradient(120% 120% at 10% 10%, #1a1a2e 0%, #0f0f14 50%, #000 100%); border-radius:28px; padding:3px; position:relative;">
+      <div style="background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border-radius:26px; padding:2px;">
+        <div style="background:#fafaf9; border-radius:24px; padding:26px 26px 0; position:relative; overflow:hidden;">
+          
+          <!-- Shine effect -->
+          <div style="position:absolute; top:0; left:0; width:50%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation:shine 3s infinite; pointer-events:none;"></div>
+
+          <!-- Header -->
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+            <span style="font-size:10px; letter-spacing:3px; color:#999; font-weight:700;">No. 00019</span>
+            <span style="font-size:10px; letter-spacing:2px; background:#111; color:#fff; padding:5px 10px; border-radius:20px;">LIMITED EDITION</span>
+          </div>
+
+          <div style="text-align:center;">
+            <div style="width:64px; height:64px; background:#111; border-radius:50%; margin:0 auto 14px; display:flex; align-items:center; justify-content:center; font-size:28px; box-shadow:0 8px 20px rgba(0,0,0,0.15);">👑</div>
+            <p style="font-size:11px; letter-spacing:4px; color:#111; font-weight:800; margin:0;">CERTIFICATE OF</p>
+            <h1 style="font-family:'Times New Roman', serif; font-size:36px; font-weight:900; margin:6px 0 0; letter-spacing:-1px; line-height:1;">Nineteen</h1>
+            <div style="height:1px; background:linear-gradient(90deg, transparent, #111, transparent); margin:16px 30px;"></div>
+            
+            <p style="font-size:13px; color:#666; margin:0;">Proudly presented to</p>
+            <h2 style="font-size:30px; font-family:cursive; margin:8px 0; color:#111;">Reina</h2>
+            <p style="font-size:13px; color:#555; line-height:1.6; max-width:260px; margin:12px auto 0;">
+              For being effortlessly iconic, dangerously pretty, and aging like fine wine since 2007.
+            </p>
+
+            <!-- Stats -->
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin:22px 0 0; text-align:center;">
+              <div style="background:#f6f5f2; border-radius:14px; padding:12px 6px;"><div style="font-size:18px;">💅</div><div style="font-size:10px; color:#999; letter-spacing:1px; margin-top:4px;">LEVEL</div><div style="font-weight:800; font-size:13px;">19</div></div>
+              <div style="background:#f6f5f2; border-radius:14px; padding:12px 6px;"><div style="font-size:18px;">✨</div><div style="font-size:10px; color:#999; letter-spacing:1px; margin-top:4px;">RARITY</div><div style="font-weight:800; font-size:13px;">LEGENDARY</div></div>
+              <div style="background:#f6f5f2; border-radius:14px; padding:12px 6px;"><div style="font-size:18px;">💖</div><div style="font-size:10px; color:#999; letter-spacing:1px; margin-top:4px;">VIBES</div><div style="font-weight:800; font-size:13px;">100%</div></div>
+            </div>
+
+            <!-- Footer Signature Area -->
+            <div style="margin-top:24px; padding:18px 0 20px; border-top:1px dashed #ddd; display:flex; justify-content:space-between; align-items:center;">
+              <div style="text-align:left;">
+                <div style="font-size:9px; letter-spacing:2px; color:#aaa;">ISSUED ON</div>
+                <div style="font-size:13px; font-weight:700;">04 . 09 . 2026</div>
+              </div>
+              <div style="text-align:center;">
+                <div style="width:56px; height:56px; border-radius:50%; background:radial-gradient(circle, #ffd700, #d4af37); display:flex; align-items:center; justify-content:center; border:2px solid #fff; box-shadow:0 0 0 2px #d4af37, 0 4px 12px rgba(212,175,55,0.4); font-weight:900; color:#5a4100; font-size:20px; margin:0 auto;">L</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:9px; letter-spacing:2px; color:#aaa;">APPROVED BY</div>
+                <div style="font-family:'Brush Script MT', cursive; font-size:26px; line-height:1; transform:rotate(-6deg); margin-top:2px;">Lewy</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <button id="closeCert" style="width:100%; background:#111; color:white; border:none; padding:14px; font-weight:700; font-size:13px; letter-spacing:2px; cursor:pointer;">CLOSE</button>
+
+    <button id="closeCert" style="margin:18px auto 0; display:block; background:rgba(255,255,255,0.1); color:white; border:1px solid rgba(255,255,255,0.2); padding:12px 28px; border-radius:100px; font-size:12px; letter-spacing:2px; font-weight:700; cursor:pointer; backdrop-filter:blur(10px);">CLOSE ✕</button>
   </div>
 </div>
 
@@ -340,6 +371,8 @@ if(certBtn){ certBtn.onclick=()=>{ certModal.style.display='flex'; }; }
 if(closeCert){ closeCert.onclick=()=>{ certModal.style.display='none'; }; }
 </script>
 </body>
+
+
 
 
 

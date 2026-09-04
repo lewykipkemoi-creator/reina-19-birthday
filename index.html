@@ -9,60 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* ===== ADDED: Play Me Game ===== */
-    #videoSurprise{padding:40px 20px; text-align:center}
-    #game-area{position:relative;width:100%;max-width:420px;height:250px;background:#fff0f3;border-radius:20px;margin:20px auto;border:2px dashed #ffb3c1;overflow:hidden}
-    #message{font-weight:700;color:#ff4d6d;height:28px;margin-top:15px;font-family:'DM Sans',sans-serif}
-    #playBtn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#ff4d6d;color:white;border:none;padding:14px 32px;border-radius:50px;font-size:18px;font-weight:700;box-shadow:0 10px 20px rgba(255,77,109,.4);transition:all.2s ease;touch-action:none;cursor:pointer;z-index:2}
-    #videoModal{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);justify-content:center;align-items:center;padding:15px}
-    #videoModal.show{display:flex}
-    #videoModal video{width:100%;max-width:400px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-    #closeVideo{position:absolute;top:20px;right:20px;background:white;border:none;width:44px;height:44px;border-radius:50%;font-size:22px;cursor:pointer}
-  </style>
 </head>
 <body>
-
-<!-- MY SONG -->
-<style>
-#music-float{position:fixed; top:64px; right:12px; z-index:9998; background:#fffdf7; border:1px solid #e9dcc3; border-radius:100px; padding:8px 12px; display:flex; align-items:center; gap:8px; box-shadow:0 4px 12px rgba(0,0,0,0.12); cursor:pointer; font-family:Georgia,serif; font-size:11px; color:#2d1b4e; font-weight:800;}
-#music-float.playing{ background:#2d1b4e; color:#f9e076; border-color:#d4af37;}
-#next-btn{margin-left:6px; background:#f9e076; border:none; border-radius:50%; width:22px; height:22px; cursor:pointer; font-weight:900;}
-</style>
-<div id="music-float"><span id="music-icon">♪</span> <span id="music-text">Play</span> <button id="next-btn">›</button></div>
-<audio id="bg-audio"></audio>
-<script>
-const tracks=[
-  {file:"./aha.mp3", name:"Aha"},
-  {file:"./jcole.mp3", name:"J Cole"},
-  {file:"./songo.mp3", name:"Drake"}
-];
-let cur=0;
-const audio=document.getElementById('bg-audio');
-const btn=document.getElementById('music-float');
-const icon=document.getElementById('music-icon');
-const txt=document.getElementById('music-text');
-const next=document.getElementById('next-btn');
-function loadTrack(i){ cur=i % tracks.length; audio.src=tracks[cur].file; txt.textContent=tracks[cur].name; }
-loadTrack(0);
-let playing=false;
-btn.onclick=async(e)=>{
-  if(e.target.id==='next-btn') return;
-  try{
-    if(!playing){ await audio.play(); playing=true; btn.classList.add('playing'); icon.textContent='♫'; }
-    else{ audio.pause(); playing=false; btn.classList.remove('playing'); icon.textContent='♪'; }
-  }catch(err){ txt.textContent='Tap again'; }
-};
-next.onclick=async()=>{
-  loadTrack(cur+1);
-  if(playing){ await audio.play(); icon.textContent='♫'; }
-  btn.classList.add('playing');
-};
-audio.onended=()=>{ loadTrack(cur+1); audio.play(); };
-</script>
-
-
-<div class="cursor-glow"></div>
+  <div class="cursor-glow"></div>
   <div id="confetti"></div>
 
   <header class="nav">
@@ -218,19 +167,6 @@ audio.onended=()=>{ loadTrack(cur+1); audio.play(); };
       </div>
     </section>
 
-    <!-- ===== ADDED SECTION: ANNOYING PLAY ME BUTTON ===== -->
-    <section class="section final" id="videoSurprise">
-      <div class="final-inner reveal">
-        <div class="big-heart">🎬</div>
-        <p class="eyebrow">FINAL LEVEL</p>
-        <h2>Okay, one REAL surprise.</h2>
-        <p>There is a video for you. But you have to catch it first 😏</p>
-        <div id="message">Can you catch the button? 😏</div>
-        <div id="game-area"><button id="playBtn">Play Me 💖</button></div>
-        <p style="font-size:13px;color:#999;margin-top:10px">It has commitment issues too</p>
-      </div>
-    </section>
-
     <section class="final section">
       <div class="final-inner reveal">
         <div class="big-heart">♥</div>
@@ -242,7 +178,9 @@ audio.onended=()=>{ loadTrack(cur+1); audio.play(); };
     </section>
   </main>
 
-  
+  <footer>
+    Made with 💜, jokes, and questionable web-development decisions — for Reina, from Lewy.
+  </footer>
 
   <div class="modal" id="modal" aria-hidden="true">
     <div class="modal-card">
@@ -254,244 +192,7 @@ audio.onended=()=>{ loadTrack(cur+1); audio.play(); };
     </div>
   </div>
 
-  <!-- VIDEO MODAL ADDED -->
-  <div id="videoModal">
-    <button id="closeVideo">✕</button>
-    <video id="reinaVideo" controls playsinline>
-      <source src="assets/20260904_101156.mp4" type="video/mp4">
-    </video>
-  </div>
-
   <div class="toast" id="toast"></div>
   <script src="script.js"></script>
-
-  <script>
-  // ===== ADDED: Annoying Play Me Logic =====
-  const playBtn=document.getElementById('playBtn');
-  const game=document.getElementById('game-area');
-  const msg=document.getElementById('message');
-  const videoModal=document.getElementById('videoModal');
-  const reinaVideo=document.getElementById('reinaVideo');
-  const closeVideo=document.getElementById('closeVideo');
-  let attempts=0;
-  const maxAttempts=8;
-  const texts=["Can you catch the button? 😏","Oops too slow! 😝","Haha not that easy!","You almost got me!","Why so slow Reina? 😂","Okay okay... 2 more tries!","Awww fine you win! 🥺💖","Last chance!","Playing your surprise... 🎬"];
-  function movePlayBtn(){
-    attempts++;
-    if(attempts < maxAttempts){
-      msg.textContent=texts[attempts]||texts[1];
-      const maxX=game.clientWidth-playBtn.offsetWidth-12;
-      const maxY=game.clientHeight-playBtn.offsetHeight-12;
-      playBtn.style.left=Math.random()*maxX+'px';
-      playBtn.style.top=Math.random()*maxY+'px';
-      playBtn.style.transform='translate(0,0)';
-      playBtn.style.scale=1-attempts*0.06;
-    }else{
-      msg.textContent=texts[8];
-      playBtn.textContent='Okay Play! ▶️';
-      playBtn.style.left='50%'; playBtn.style.top='50%';
-      playBtn.style.transform='translate(-50%,-50%)';
-      playBtn.style.scale='1.25'; playBtn.style.background='#2ec4b6';
-      playBtn.onclick=()=>{videoModal.classList.add('show'); reinaVideo.play();};
-    }
-  }
-  if(playBtn){
-    playBtn.addEventListener('mouseenter',movePlayBtn);
-    playBtn.addEventListener('touchstart',e=>{e.preventDefault(); movePlayBtn();});
-    playBtn.addEventListener('click',e=>{
-      if(attempts < maxAttempts){ e.preventDefault(); movePlayBtn(); }
-      else { videoModal.classList.add('show'); reinaVideo.play(); }
-    });
-  }
-  if(closeVideo){ closeVideo.onclick=()=>{videoModal.classList.remove('show'); reinaVideo.pause();}; }
-  if(videoModal){ videoModal.onclick=e=>{ if(e.target===videoModal){videoModal.classList.remove('show'); reinaVideo.pause();}}; }
-  </script>
-
-
-<script>
-const playBtn=document.getElementById('playBtn');
-const game=document.getElementById('game-area');
-let a=0;
-function makeItPlayable(){
-  playBtn.textContent='Okay Play! ▶️';
-  playBtn.style.left='50%';playBtn.style.top='50%';
-  playBtn.style.transform='translate(-50%,-50%)';
-  playBtn.style.background='#2ec4b6';
-  
-}
-function moveBtn(){
-  a++;
-  if(a<7){
-    playBtn.style.left=Math.random()*(game.clientWidth-90)+'px';
-    playBtn.style.top=Math.random()*(game.clientHeight-50)+'px';
-    playBtn.style.transform='none';
-  }else{ makeItPlayable(); }
-}
-playBtn.onclick=function(e){ if(a<7){ e.preventDefault(); moveBtn(); } else { window.location.href='assets/20260904_101156.mp4'; } };
-playBtn.ontouchstart=function(e){ if(a<7){ e.preventDefault(); moveBtn(); } };
-</script>
-
-
-
-
-
-
-
-<!-- 19 REASONS CHAOTIC -->
-<style>
-.reasons-wrap{padding:30px 18px; max-width:400px; margin:0 auto;}
-.reasons-title{font-family:Georgia,serif; text-align:center; color:#2d1b4e; font-size:24px; margin-bottom:8px;}
-.reasons-sub{text-align:center; color:#8a7aa8; font-size:13px; margin-bottom:22px; font-family:Georgia,serif;}
-.reason-card{background:#fffdf7; border:1px solid #e9dcc3; border-radius:16px; padding:16px 18px; margin:12px 0; display:flex; gap:12px; align-items:flex-start; box-shadow:0 4px 12px rgba(45,27,78,0.06); transform:translateY(20px); opacity:0; transition:all 0.6s ease; cursor:pointer;}
-.reason-card.show{transform:translateY(0); opacity:1;}
-.reason-num{min-width:36px; height:36px; background:#2d1b4e; color:#f9e076; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px;}
-.reason-text{font-family:Georgia,serif; font-size:14px; color:#2d1b4e; line-height:1.5;}
-</style>
-<div class="reasons-wrap" id="reasons">
-  <h2 class="reasons-title">19 reasons you're a menace (love you tho)</h2>
-  <p class="reasons-sub">tap them, chaotic queen 👑</p>
-  <div class="reason-card"><div class="reason-num">1</div><div class="reason-text">You will literally talk to a wall and make it feel heard.</div></div>
-  <div class="reason-card"><div class="reason-num">2</div><div class="reason-text">You care about people who don't even care about their own plants.</div></div>
-  <div class="reason-card"><div class="reason-num">3</div><div class="reason-text">You're too likeable. It's suspicious. Are you running a cult? I would join.</div></div>
-  <div class="reason-card"><div class="reason-num">4</div><div class="reason-text">19 years and you still say "sorry" when SOMEONE ELSE bumps into YOU.</div></div>
-  <div class="reason-card"><div class="reason-num">5</div><div class="reason-text">You collect random humans like they're Pokemon cards.</div></div>
-  <div class="reason-card"><div class="reason-num">6</div><div class="reason-text">Your brain: 2% peace, 98% "what if they're mad at me??" (they're not).</div></div>
-  <div class="reason-card"><div class="reason-num">7</div><div class="reason-text">You would share your last fries and then be sad about it for 3 business days.</div></div>
-  <div class="reason-card"><div class="reason-num">8</div><div class="reason-text">Officially 19 but still loses her keys while holding them.</div></div>
-  <div class="reason-card"><div class="reason-num">9</div><div class="reason-text">You laugh at your own jokes before you even finish them — and we all do too.</div></div>
-  <div class="reason-card"><div class="reason-num">10</div><div class="reason-text">You have main-character energy but you use it to hype up everyone else.</div></div>
-  <div class="reason-card"><div class="reason-num">11</div><div class="reason-text">You'd be late to your own birthday because you stopped to help someone.</div></div>
-  <div class="reason-card"><div class="reason-num">12</div><div class="reason-text">Your camera roll is 80% screenshots you'll "definitely use later" (you won't).</div></div>
-  <div class="reason-card"><div class="reason-num">13</div><div class="reason-text">You overthink a "k" text for 45 minutes like it's a final exam.</div></div>
-  <div class="reason-card"><div class="reason-num">14</div><div class="reason-text">19 and still can't decide what to eat, but everyone trusts your food choices.</div></div>
-  <div class="reason-card"><div class="reason-num">15</div><div class="reason-text">You're chaotic good. Like, would punch someone then ask if they're okay.</div></div>
-  <div class="reason-card"><div class="reason-num">16</div><div class="reason-text">You make friends in the Uber, at the shop, in the queue — babe, chill.</div></div>
-  <div class="reason-card"><div class="reason-num">17</div><div class="reason-text">You act like you're shy but you have the loudest laugh in a 10km radius.</div></div>
-  <div class="reason-card"><div class="reason-num">18</div><div class="reason-text">If being annoying was illegal you'd have life sentence, but we love it here.</div></div>
-  <div class="reason-card"><div class="reason-num">19</div><div class="reason-text">You're officially 19. Still weird, still too nice, still my favorite human. Proud of you — Lewy</div></div>
-</div>
-<script>
-const cards=document.querySelectorAll('.reason-card');
-const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('show'), i*80);}});},{threshold:0.15});
-cards.forEach(c=>obs.observe(c));
-cards.forEach(c=>{c.addEventListener('click',()=>{c.style.background='#fff7d6'; if(navigator.vibrate) navigator.vibrate(30);});});
-</script>
-
-<!-- CERTIFICATE - CLEAN NO DOWNLOAD -->
-
-<div id="secret-final" style="display:none; text-align:center; margin:40px 20px; animation: pop 0.5s ease;">
-  <p style="font-family:Georgia,serif; color:#2d1b4e; font-size:16px; margin-bottom:12px;">You found them all. One more thing...</p>
-  <button id="secretBtn" style="background:linear-gradient(135deg,#2d1b4e,#5a3d8a); color:#f9e076; padding:16px 36px; border:2px solid #d4af37; border-radius:100px; font-weight:800; font-size:15px; cursor:pointer; box-shadow:0 8px 20px rgba(45,27,78,0.3);">🎁 ONE LAST THING →</button>
-</div>
-<style>@keyframes pop{0%{transform:scale(0.8);opacity:0}100%{transform:scale(1);opacity:1}}</style>
-<script>
-(function(){
-let tapped=new Set();
-const cards=document.querySelectorAll('.reason-card');
-const secret=document.getElementById('secret-final');
-cards.forEach((c,i)=>{
-  c.addEventListener('click',()=>{
-    tapped.add(i);
-    if(tapped.size===19){
-      secret.style.display='block';
-      secret.scrollIntoView({behavior:'smooth', block:'center'});
-      if(navigator.vibrate) navigator.vibrate([30,50,30]);
-    }
-  });
-});
-document.getElementById('secretBtn').onclick=()=>{
-  document.getElementById('certModal').style.display='flex';
-  // confetti
-  const e=new Event('click'); // trigger confetti from cert btn
-  if(window.makeConfetti) window.makeConfetti();
-  const canvas=document.getElementById('confetti-canvas');
-  if(canvas){
-    const evt = new CustomEvent('certOpen');
-    document.dispatchEvent(evt);
-  }
-  document.getElementById('certBtn').click();
-};
-})();
-</script>
-
-<div style="text-align:center; margin:50px 20px;">
-  <button id="certBtn" style="background:#2d1b4e; color:#f9e076; padding:15px 30px; border:2px solid #d4af37; border-radius:100px; font-weight:800; font-size:15px; cursor:pointer;">📜 VIEW YOUR 19 CERTIFICATE</button>
-</div>
-<div id="certModal" style="display:none; position:fixed; inset:0; background:rgba(20,10,40,0.95); z-index:9999; flex-direction:column; align-items:center; justify-content:center; padding:20px; overflow-y:auto;">
-  <div style="width:88%; max-width:330px; background:#f5f1e8; position:relative; box-shadow:0 0 0 6px #2d1b4e, 0 0 0 8px #d4af37; padding:28px 22px 20px; text-align:center;">
-    <div style="position:absolute; top:8px; left:8px; width:26px; height:26px; border-top:2px solid #d4af37; border-left:2px solid #d4af37;"></div>
-    <div style="position:absolute; top:8px; right:8px; width:26px; height:26px; border-top:2px solid #d4af37; border-right:2px solid #d4af37;"></div>
-    <div style="position:absolute; bottom:8px; left:8px; width:26px; height:26px; border-bottom:2px solid #d4af37; border-left:2px solid #d4af37;"></div>
-    <div style="position:absolute; bottom:8px; right:8px; width:26px; height:26px; border-bottom:2px solid #d4af37; border-right:2px solid #d4af37;"></div>
-    <h2 style="font-family:Georgia,serif; font-size:18px; color:#2d1b4e; margin:0; font-weight:400;">Certificate of</h2>
-    <h2 style="font-family:Georgia,serif; font-size:22px; color:#2d1b4e; margin:2px 0 12px; font-style:italic; font-weight:700;">Officially Being 19</h2>
-    <div style="color:#d4af37; font-size:11px; margin:12px 0;">✦ ─── ✦ ─── ✦</div>
-    <h1 style="font-family:cursive; font-size:46px; color:#e07a7a; margin:10px 0;">Reina</h1>
-    <div style="color:#d4af37; font-size:11px; margin:12px 0;">✦ ─── ✦ ─── ✦</div>
-    <p style="font-family:Georgia,serif; font-size:13.5px; color:#2d1b4e; line-height:1.6; max-width:280px; margin:0 auto;">This certifies that the above named person has successfully completed nineteen years of talking to strangers, over-caring about everyone around her, and being far too likeable for her own good.</p>
-    <p style="font-family:Georgia,serif; font-size:13px; color:#5a3d8a; font-style:italic; margin:18px 0;">...proud in the best possible way.</p>
-    <div style="height:1px; background:#d4af37; margin:18px 0; opacity:0.5;"></div>
-    <div style="display:flex; justify-content:space-between; margin-top:14px;"><div style="text-align:left; font-family:Georgia,serif; font-size:11px; color:#2d1b4e;">Issued:<br>today, obviously</div><div style="font-family:cursive; font-size:26px; transform:rotate(-4deg);">Lewy</div></div>
-  </div>
-  <button id="closeCert" style="margin-top:20px; background:white; color:#2d1b4e; border:none; padding:12px 32px; border-radius:100px; font-weight:800; font-size:11px; cursor:pointer;">CLOSE ✕</button>
-</div>
-<script>
-document.getElementById('certBtn').onclick=()=>{document.getElementById('certModal').style.display='flex';};
-document.getElementById('closeCert').onclick=()=>{document.getElementById('certModal').style.display='none';};
-document.getElementById('certModal').onclick=(e)=>{if(e.target.id==='certModal') e.currentTarget.style.display='none';};
-</script>
-<footer>
-    Made with 💜, jokes, and questionable web-development decisions — for Reina, from Lewy.
-  </footer>
-
-<!-- CONFETTI -->
-<canvas id="confetti-canvas" style="position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:10000;"></canvas>
-<script>
-(function(){
-const canvas=document.getElementById('confetti-canvas');
-const ctx=canvas.getContext('2d');
-let W,H,parts=[];
-function resize(){W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight;}
-window.addEventListener('resize',resize); resize();
-function rand(a,b){return Math.random()*(b-a)+a;}
-function makeConfetti(x,y){
-  const colors=['#f9e076','#d4af37','#2d1b4e','#e07a7a','#ffffff'];
-  for(let i=0;i<120;i++){
-    parts.push({
-      x:x||W/2, y:y||H/3,
-      vx:rand(-7,7), vy:rand(-9,-1),
-      r:rand(4,8), color:colors[Math.floor(Math.random()*colors.length)],
-      rot:rand(0,360), rotV:rand(-10,10), life:rand(80,150)
-    });
-  }
-}
-function anim(){
-  ctx.clearRect(0,0,W,H);
-  for(let i=parts.length-1;i>=0;i--){
-    let p=parts[i];
-    p.x+=p.vx; p.y+=p.vy; p.vy+=0.15; p.rot+=p.rotV; p.life--;
-    ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
-    ctx.fillStyle=p.color; ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*0.6);
-    ctx.restore();
-    if(p.life<=0 || p.y>H) parts.splice(i,1);
-  }
-  requestAnimationFrame(anim);
-}
-anim();
-// fire on load
-setTimeout(()=>makeConfetti(), 800);
-// fire when cert opens
-const origBtn=document.getElementById('certBtn');
-if(origBtn){ origBtn.addEventListener('click', ()=>{ setTimeout(()=>makeConfetti(W/2, H/2), 200); }); }
-})();
-</script>
 </body>
-
-
-
-
-
-
-
-
 </html>

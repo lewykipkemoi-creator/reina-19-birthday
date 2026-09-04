@@ -27,24 +27,42 @@
 <style>
 #music-float{position:fixed; top:64px; right:12px; z-index:9998; background:#fffdf7; border:1px solid #e9dcc3; border-radius:100px; padding:8px 12px; display:flex; align-items:center; gap:8px; box-shadow:0 4px 12px rgba(0,0,0,0.12); cursor:pointer; font-family:Georgia,serif; font-size:11px; color:#2d1b4e; font-weight:800;}
 #music-float.playing{ background:#2d1b4e; color:#f9e076; border-color:#d4af37;}
+#next-btn{margin-left:6px; background:#f9e076; border:none; border-radius:50%; width:22px; height:22px; cursor:pointer; font-weight:900;}
 </style>
-<div id="music-float"><span id="music-icon">♪</span> <span id="music-text">Play our song</span></div>
-<audio id="bg-audio" loop><source src="./songo.mp3" type="audio/mpeg"></audio>
+<div id="music-float"><span id="music-icon">♪</span> <span id="music-text">Play</span> <button id="next-btn">›</button></div>
+<audio id="bg-audio"></audio>
 <script>
+const tracks=[
+  {file:"./aha.mp3", name:"Aha"},
+  {file:"./jcole.mp3", name:"J Cole"},
+  {file:"./songo.mp3", name:"Drake"}
+];
+let cur=0;
 const audio=document.getElementById('bg-audio');
 const btn=document.getElementById('music-float');
 const icon=document.getElementById('music-icon');
 const txt=document.getElementById('music-text');
+const next=document.getElementById('next-btn');
+function loadTrack(i){ cur=i % tracks.length; audio.src=tracks[cur].file; txt.textContent=tracks[cur].name; }
+loadTrack(0);
 let playing=false;
-btn.onclick=async()=>{
+btn.onclick=async(e)=>{
+  if(e.target.id==='next-btn') return;
   try{
-    if(!playing){ await audio.play(); playing=true; btn.classList.add('playing'); icon.textContent='♫'; txt.textContent='Playing'; }
-    else{ audio.pause(); playing=false; btn.classList.remove('playing'); icon.textContent='♪'; txt.textContent='Play our song'; }
-  }catch(e){ txt.textContent='Tap again'; }
+    if(!playing){ await audio.play(); playing=true; btn.classList.add('playing'); icon.textContent='♫'; }
+    else{ audio.pause(); playing=false; btn.classList.remove('playing'); icon.textContent='♪'; }
+  }catch(err){ txt.textContent='Tap again'; }
 };
+next.onclick=async()=>{
+  loadTrack(cur+1);
+  if(playing){ await audio.play(); icon.textContent='♫'; }
+  btn.classList.add('playing');
+};
+audio.onended=()=>{ loadTrack(cur+1); audio.play(); };
 </script>
 
-  <div class="cursor-glow"></div>
+
+<div class="cursor-glow"></div>
   <div id="confetti"></div>
 
   <header class="nav">

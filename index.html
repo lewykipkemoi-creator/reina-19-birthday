@@ -22,6 +22,28 @@
   </style>
 </head>
 <body>
+
+<!-- MY SONG -->
+<style>
+#music-float{position:fixed; top:14px; right:14px; z-index:9998; background:#fffdf7; border:1px solid #e9dcc3; border-radius:100px; padding:9px 15px; display:flex; align-items:center; gap:8px; box-shadow:0 4px 12px rgba(0,0,0,0.12); cursor:pointer; font-family:Georgia,serif; font-size:12px; color:#2d1b4e; font-weight:800;}
+#music-float.playing{ background:#2d1b4e; color:#f9e076; border-color:#d4af37;}
+</style>
+<div id="music-float"><span id="music-icon">♪</span> <span id="music-text">Play our song</span></div>
+<audio id="bg-audio" loop><source src="./songo.mp3" type="audio/mpeg"></audio>
+<script>
+const audio=document.getElementById('bg-audio');
+const btn=document.getElementById('music-float');
+const icon=document.getElementById('music-icon');
+const txt=document.getElementById('music-text');
+let playing=false;
+btn.onclick=async()=>{
+  try{
+    if(!playing){ await audio.play(); playing=true; btn.classList.add('playing'); icon.textContent='♫'; txt.textContent='Playing'; }
+    else{ audio.pause(); playing=false; btn.classList.remove('playing'); icon.textContent='♪'; txt.textContent='Play our song'; }
+  }catch(e){ txt.textContent='Tap again'; }
+};
+</script>
+
   <div class="cursor-glow"></div>
   <div id="confetti"></div>
 

@@ -298,69 +298,76 @@ playBtn.ontouchstart=function(e){ if(a<7){ e.preventDefault(); moveBtn(); } };
 
 
 
-<!-- BEAUTIFUL CERTIFICATE BUTTON -->
-<div style="text-align:center; margin:40px 20px;">
-  <button id="certBtn" style="background:#2d1b4e; color:#f9e076; padding:15px 30px; border:2px solid #d4af37; border-radius:100px; font-weight:800; font-size:15px; letter-spacing:1px; cursor:pointer;">
-    📜 CLAIM YOUR 19 CERTIFICATE
-  </button>
+
+<!-- 19 REASONS CHAOTIC -->
+<style>
+.reasons-wrap{padding:30px 18px; max-width:400px; margin:0 auto;}
+.reasons-title{font-family:Georgia,serif; text-align:center; color:#2d1b4e; font-size:24px; margin-bottom:8px;}
+.reasons-sub{text-align:center; color:#8a7aa8; font-size:13px; margin-bottom:22px; font-family:Georgia,serif;}
+.reason-card{background:#fffdf7; border:1px solid #e9dcc3; border-radius:16px; padding:16px 18px; margin:12px 0; display:flex; gap:12px; align-items:flex-start; box-shadow:0 4px 12px rgba(45,27,78,0.06); transform:translateY(20px); opacity:0; transition:all 0.6s ease; cursor:pointer;}
+.reason-card.show{transform:translateY(0); opacity:1;}
+.reason-num{min-width:36px; height:36px; background:#2d1b4e; color:#f9e076; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px;}
+.reason-text{font-family:Georgia,serif; font-size:14px; color:#2d1b4e; line-height:1.5;}
+</style>
+<div class="reasons-wrap" id="reasons">
+  <h2 class="reasons-title">19 reasons you're a menace (love you tho)</h2>
+  <p class="reasons-sub">tap them, chaotic queen 👑</p>
+  <div class="reason-card"><div class="reason-num">1</div><div class="reason-text">You will literally talk to a wall and make it feel heard.</div></div>
+  <div class="reason-card"><div class="reason-num">2</div><div class="reason-text">You care about people who don't even care about their own plants.</div></div>
+  <div class="reason-card"><div class="reason-num">3</div><div class="reason-text">You're too likeable. It's suspicious. Are you running a cult? I would join.</div></div>
+  <div class="reason-card"><div class="reason-num">4</div><div class="reason-text">19 years and you still say "sorry" when SOMEONE ELSE bumps into YOU.</div></div>
+  <div class="reason-card"><div class="reason-num">5</div><div class="reason-text">You collect random humans like they're Pokemon cards.</div></div>
+  <div class="reason-card"><div class="reason-num">6</div><div class="reason-text">Your brain: 2% peace, 98% "what if they're mad at me??" (they're not).</div></div>
+  <div class="reason-card"><div class="reason-num">7</div><div class="reason-text">You would share your last fries and then be sad about it for 3 business days.</div></div>
+  <div class="reason-card"><div class="reason-num">8</div><div class="reason-text">Officially 19 but still loses her keys while holding them.</div></div>
+  <div class="reason-card"><div class="reason-num">9</div><div class="reason-text">You laugh at your own jokes before you even finish them — and we all do too.</div></div>
+  <div class="reason-card"><div class="reason-num">10</div><div class="reason-text">You have main-character energy but you use it to hype up everyone else.</div></div>
+  <div class="reason-card"><div class="reason-num">11</div><div class="reason-text">You'd be late to your own birthday because you stopped to help someone.</div></div>
+  <div class="reason-card"><div class="reason-num">12</div><div class="reason-text">Your camera roll is 80% screenshots you'll "definitely use later" (you won't).</div></div>
+  <div class="reason-card"><div class="reason-num">13</div><div class="reason-text">You overthink a "k" text for 45 minutes like it's a final exam.</div></div>
+  <div class="reason-card"><div class="reason-num">14</div><div class="reason-text">19 and still can't decide what to eat, but everyone trusts your food choices.</div></div>
+  <div class="reason-card"><div class="reason-num">15</div><div class="reason-text">You're chaotic good. Like, would punch someone then ask if they're okay.</div></div>
+  <div class="reason-card"><div class="reason-num">16</div><div class="reason-text">You make friends in the Uber, at the shop, in the queue — babe, chill.</div></div>
+  <div class="reason-card"><div class="reason-num">17</div><div class="reason-text">You act like you're shy but you have the loudest laugh in a 10km radius.</div></div>
+  <div class="reason-card"><div class="reason-num">18</div><div class="reason-text">If being annoying was illegal you'd have life sentence, but we love it here.</div></div>
+  <div class="reason-card"><div class="reason-num">19</div><div class="reason-text">You're officially 19. Still weird, still too nice, still my favorite human. Proud of you — Lewy</div></div>
 </div>
-
-<div id="certModal" style="display:none; position:fixed; inset:0; background:rgba(20,10,40,0.95); z-index:9999; flex-direction:column; align-items:center; justify-content:center; padding:12px; overflow-y:auto;">
-  
-  <!-- Certificate Card - now fits screen -->
-  <div style="width:92%; max-width:340px; background:#f5f1e8; position:relative; box-shadow:0 0 0 6px #2d1b4e, 0 0 0 8px #d4af37; border-radius:2px; padding:28px 22px 20px; text-align:center; flex-shrink:0;">
-    
-    <div style="position:absolute; top:8px; left:8px; width:28px; height:28px; border-top:2px solid #d4af37; border-left:2px solid #d4af37;"></div>
-    <div style="position:absolute; top:8px; right:8px; width:28px; height:28px; border-top:2px solid #d4af37; border-right:2px solid #d4af37;"></div>
-    <div style="position:absolute; bottom:8px; left:8px; width:28px; height:28px; border-bottom:2px solid #d4af37; border-left:2px solid #d4af37;"></div>
-    <div style="position:absolute; bottom:8px; right:8px; width:28px; height:28px; border-bottom:2px solid #d4af37; border-right:2px solid #d4af37;"></div>
-
-    <h2 style="font-family:Georgia,serif; font-size:18px; color:#2d1b4e; font-weight:400; margin:0;">Certificate of</h2>
-    <h2 style="font-family:Georgia,serif; font-size:22px; color:#2d1b4e; font-weight:700; margin:2px 0 10px; font-style:italic;">Officially Being 19</h2>
-    
-    <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin:12px 0;">
-      <div style="height:1px; width:40px; background:#d4af37;"></div><div style="color:#d4af37; font-size:10px;">✦</div><div style="height:1px; width:40px; background:#d4af37;"></div>
-    </div>
-
-    <h1 style="font-family:cursive; font-size:46px; color:#e07a7a; margin:10px 0; font-weight:400; transform:rotate(-2deg);">Reina</h1>
-
-    <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin:12px 0;">
-      <div style="height:1px; width:40px; background:#d4af37;"></div><div style="color:#d4af37; font-size:10px;">✦</div><div style="height:1px; width:40px; background:#d4af37;"></div>
-    </div>
-
-    <p style="font-family:Georgia,serif; font-size:13.5px; color:#2d1b4e; line-height:1.65; margin:0 auto; max-width:280px;">
-      This certifies that the above named person has successfully completed nineteen years of talking to strangers, over-caring about everyone around her, and being far too likeable for her own good.
-    </p>
-
-    <p style="font-family:Georgia,serif; font-size:13px; color:#5a3d8a; font-style:italic; margin:18px 0 20px;">...proud in the best possible way.</p>
-
-    <div style="height:1px; background:linear-gradient(90deg, transparent, #d4af37, transparent); margin:16px 0;"></div>
-
-    <div style="display:flex; justify-content:space-between; align-items:end; margin-top:14px;">
-      <div style="text-align:left;">
-        <div style="font-size:11px; color:#2d1b4e; font-family:Georgia,serif;">Issued:</div>
-        <div style="font-size:12px; color:#2d1b4e; font-family:Georgia,serif;">today, obviously</div>
-      </div>
-      <div style="font-family:cursive; font-size:26px; color:#111; transform:rotate(-4deg);">Lewy</div>
-    </div>
-  </div>
-
-  <!-- Buttons BELOW certificate, not overlapping -->
-  <div style="display:flex; gap:12px; margin-top:18px; flex-shrink:0;">
-    <a href="assets/certificate.png" download="Reina-19-Certificate.png" style="background:#d4af37; color:#2d1b4e; padding:12px 20px; border-radius:100px; font-weight:800; font-size:12px; text-decoration:none;">💾 SAVE IMAGE</a>
-    <button id="closeCert" style="background:white; color:#2d1b4e; border:none; padding:12px 22px; border-radius:100px; font-weight:800; font-size:12px; cursor:pointer;">CLOSE ✕</button>
-  </div>
-</div>
-
 <script>
-const certBtn=document.getElementById('certBtn');
-const certModal=document.getElementById('certModal');
-const closeCert=document.getElementById('closeCert');
-if(certBtn) certBtn.onclick=()=>{ certModal.style.display='flex'; };
-if(closeCert) closeCert.onclick=()=>{ certModal.style.display='none'; };
-if(certModal) certModal.onclick=(e)=>{ if(e.target===certModal) certModal.style.display='none'; };
+const cards=document.querySelectorAll('.reason-card');
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('show'), i*80);}});},{threshold:0.15});
+cards.forEach(c=>obs.observe(c));
+cards.forEach(c=>{c.addEventListener('click',()=>{c.style.background='#fff7d6'; if(navigator.vibrate) navigator.vibrate(30);});});
+</script>
+
+<!-- CERTIFICATE - CLEAN NO DOWNLOAD -->
+<div style="text-align:center; margin:50px 20px;">
+  <button id="certBtn" style="background:#2d1b4e; color:#f9e076; padding:15px 30px; border:2px solid #d4af37; border-radius:100px; font-weight:800; font-size:15px; cursor:pointer;">📜 VIEW YOUR 19 CERTIFICATE</button>
+</div>
+<div id="certModal" style="display:none; position:fixed; inset:0; background:rgba(20,10,40,0.95); z-index:9999; flex-direction:column; align-items:center; justify-content:center; padding:20px; overflow-y:auto;">
+  <div style="width:88%; max-width:330px; background:#f5f1e8; position:relative; box-shadow:0 0 0 6px #2d1b4e, 0 0 0 8px #d4af37; padding:28px 22px 20px; text-align:center;">
+    <div style="position:absolute; top:8px; left:8px; width:26px; height:26px; border-top:2px solid #d4af37; border-left:2px solid #d4af37;"></div>
+    <div style="position:absolute; top:8px; right:8px; width:26px; height:26px; border-top:2px solid #d4af37; border-right:2px solid #d4af37;"></div>
+    <div style="position:absolute; bottom:8px; left:8px; width:26px; height:26px; border-bottom:2px solid #d4af37; border-left:2px solid #d4af37;"></div>
+    <div style="position:absolute; bottom:8px; right:8px; width:26px; height:26px; border-bottom:2px solid #d4af37; border-right:2px solid #d4af37;"></div>
+    <h2 style="font-family:Georgia,serif; font-size:18px; color:#2d1b4e; margin:0; font-weight:400;">Certificate of</h2>
+    <h2 style="font-family:Georgia,serif; font-size:22px; color:#2d1b4e; margin:2px 0 12px; font-style:italic; font-weight:700;">Officially Being 19</h2>
+    <div style="color:#d4af37; font-size:12px; margin:12px 0;">✦ ─── ✦ ─── ✦</div>
+    <h1 style="font-family:cursive; font-size:46px; color:#e07a7a; margin:10px 0;">Reina</h1>
+    <div style="color:#d4af37; font-size:12px; margin:12px 0;">✦ ─── ✦ ─── ✦</div>
+    <p style="font-family:Georgia,serif; font-size:13.5px; color:#2d1b4e; line-height:1.6; max-width:280px; margin:0 auto;">This certifies that the above named person has successfully completed nineteen years of talking to strangers, over-caring about everyone around her, and being far too likeable for her own good.</p>
+    <p style="font-family:Georgia,serif; font-size:13px; color:#5a3d8a; font-style:italic; margin:18px 0;">...proud in the best possible way.</p>
+    <div style="height:1px; background:#d4af37; margin:18px 0; opacity:0.5;"></div>
+    <div style="display:flex; justify-content:space-between; margin-top:14px;"><div style="text-align:left; font-family:Georgia,serif; font-size:12px; color:#2d1b4e;">Issued:<br>today, obviously</div><div style="font-family:cursive; font-size:26px; transform:rotate(-4deg);">Lewy</div></div>
+  </div>
+  <button id="closeCert" style="margin-top:20px; background:white; color:#2d1b4e; border:none; padding:12px 32px; border-radius:100px; font-weight:800; font-size:12px; cursor:pointer;">CLOSE ✕</button>
+</div>
+<script>
+document.getElementById('certBtn').onclick=()=>{document.getElementById('certModal').style.display='flex';};
+document.getElementById('closeCert').onclick=()=>{document.getElementById('certModal').style.display='none';};
+document.getElementById('certModal').onclick=(e)=>{if(e.target.id==='certModal') e.currentTarget.style.display='none';};
 </script>
 </body>
+
 
 
 

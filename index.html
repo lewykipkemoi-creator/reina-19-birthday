@@ -292,6 +292,43 @@ function moveBtn(){
 playBtn.onclick=function(e){ if(a<7){ e.preventDefault(); moveBtn(); } else { window.location.href='assets/20260904_101156.mp4'; } };
 playBtn.ontouchstart=function(e){ if(a<7){ e.preventDefault(); moveBtn(); } };
 </script>
+
+<!-- CERTIFICATE BUTTON -->
+<div style="text-align:center; margin:30px 0;">
+  <button id="certBtn" style="background:#ffbe0b; color:#222; padding:14px 22px; border:none; border-radius:12px; font-weight:800; font-size:16px; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+    📜 Claim Your 19yrs Old Certificate
+  </button>
+</div>
+
+<!-- CERTIFICATE MODAL -->
+<div id="certModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:#fffdf5; border:6px double #ff006e; border-radius:20px; max-width:400px; width:100%; padding:25px; text-align:center; position:relative; font-family:cursive;">
+    <button id="closeCert" style="position:absolute; top:10px; right:15px; background:none; border:none; font-size:24px; cursor:pointer;">✖️</button>
+    <div style="font-size:40px;">👑</div>
+    <h2 style="color:#ff006e; margin:10px 0;">OFFICIAL CERTIFICATE</h2>
+    <p style="font-size:14px; color:#555;">This certifies that</p>
+    <h1 style="margin:5px 0; color:#222;">REINA</h1>
+    <p style="font-size:14px;">has successfully completed</p>
+    <h3 style="background:#ffbe0b; display:inline-block; padding:5px 15px; border-radius:20px; margin:10px 0;">19 YEARS OF BEING AWESOME</h3>
+    <p style="font-size:13px; color:#555; margin-top:15px;">- No more teenage drama license<br>- Now legally more beautiful & dangerous<br>- Cake tax must be paid to Lewy</p>
+    <div style="margin-top:20px; border-top:1px dashed #ccc; padding-top:15px;">
+      <p style="font-size:12px; margin:0;">APPROVED & STAMPED BY:</p>
+      <p style="font-size:18px; font-weight:bold; margin:5px 0; font-family:monospace;">Lewy Kipkemoi™</p>
+      <p style="font-size:10px; color:#999;">Chairman of Reina Birthday Committee<br>Dept. of Handsomeness & Vibes</p>
+      <div style="font-size:30px; margin-top:5px;">✅🔏</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const certBtn=document.getElementById('certBtn');
+const certModal=document.getElementById('certModal');
+const closeCert=document.getElementById('closeCert');
+if(certBtn){ certBtn.onclick=()=>{ certModal.style.display='flex'; }; }
+if(closeCert){ closeCert.onclick=()=>{ certModal.style.display='none'; }; }
+if(certModal){ certModal.onclick=(e)=>{ if(e.target===certModal) certModal.style.display='none'; }; }
+</script>
+
 </body>
 
 

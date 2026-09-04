@@ -254,7 +254,7 @@
       playBtn.style.left='50%'; playBtn.style.top='50%';
       playBtn.style.transform='translate(-50%,-50%)';
       playBtn.style.scale='1.25'; playBtn.style.background='#2ec4b6';
-      playBtn.onclick=()=>{videoModal.classList.add('show'); reinaVideo.play();};
+      playBtn.onclick=()=>{videoModal.classList.add('show'); // redirect to video};
     }
   }
   if(playBtn){
@@ -262,7 +262,7 @@
     playBtn.addEventListener('touchstart',e=>{e.preventDefault(); movePlayBtn();});
     playBtn.addEventListener('click',e=>{
       if(attempts < maxAttempts){ e.preventDefault(); movePlayBtn(); }
-      else { videoModal.classList.add('show'); reinaVideo.play(); }
+      else { videoModal.classList.add('show'); // redirect to video }
     });
   }
   if(closeVideo){ closeVideo.onclick=()=>{videoModal.classList.remove('show'); reinaVideo.pause();}; }
@@ -277,9 +277,9 @@ const reinaVideo=document.getElementById('reinaVideo');
 const closeVideo=document.getElementById('closeVideo');
 let a=0;
 function playNow(){
-  videoModal.style.display='flex';
-  reinaVideo.currentTime=0;
-  reinaVideo.play();
+  window.location.href='assets/20260904_101156.mp4';
+  //
+  // redirect to video
 }
 function moveBtn(){
   a++;

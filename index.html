@@ -293,30 +293,42 @@ playBtn.onclick=function(e){ if(a<7){ e.preventDefault(); moveBtn(); } else { wi
 playBtn.ontouchstart=function(e){ if(a<7){ e.preventDefault(); moveBtn(); } };
 </script>
 
+
 <!-- CERTIFICATE BUTTON -->
-<div style="text-align:center; margin:30px 0;">
-  <button id="certBtn" style="background:#ffbe0b; color:#222; padding:14px 22px; border:none; border-radius:12px; font-weight:800; font-size:16px; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
-    📜 Claim Your 19yrs Old Certificate
+<div style="text-align:center; margin:35px 20px;">
+  <button id="certBtn" style="background:linear-gradient(135deg,#ff006e,#ffbe0b); color:white; padding:16px 28px; border:none; border-radius:30px; font-weight:800; font-size:17px; cursor:pointer; box-shadow:0 6px 20px rgba(255,0,110,0.3); letter-spacing:0.5px;">
+    📜 Claim Your Certificate
   </button>
 </div>
 
-<!-- CERTIFICATE MODAL -->
-<div id="certModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center; padding:20px;">
-  <div style="background:#fffdf5; border:6px double #ff006e; border-radius:20px; max-width:400px; width:100%; padding:25px; text-align:center; position:relative; font-family:cursive;">
-    <button id="closeCert" style="position:absolute; top:10px; right:15px; background:none; border:none; font-size:24px; cursor:pointer;">✖️</button>
-    <div style="font-size:40px;">👑</div>
-    <h2 style="color:#ff006e; margin:10px 0;">OFFICIAL CERTIFICATE</h2>
-    <p style="font-size:14px; color:#555;">This certifies that</p>
-    <h1 style="margin:5px 0; color:#222;">REINA</h1>
-    <p style="font-size:14px;">has successfully completed</p>
-    <h3 style="background:#ffbe0b; display:inline-block; padding:5px 15px; border-radius:20px; margin:10px 0;">19 YEARS OF BEING AWESOME</h3>
-    <p style="font-size:13px; color:#555; margin-top:15px;">- No more teenage drama license<br>- Now legally more beautiful & dangerous<br>- Cake tax must be paid to Lewy</p>
-    <div style="margin-top:20px; border-top:1px dashed #ccc; padding-top:15px;">
-      <p style="font-size:12px; margin:0;">APPROVED & STAMPED BY:</p>
-      <p style="font-size:18px; font-weight:bold; margin:5px 0; font-family:monospace;">Lewy Kipkemoi™</p>
-      <p style="font-size:10px; color:#999;">Chairman of Reina Birthday Committee<br>Dept. of Handsomeness & Vibes</p>
-      <div style="font-size:30px; margin-top:5px;">✅🔏</div>
+<div id="certModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:9999; align-items:center; justify-content:center; padding:16px;">
+  <div style="background:white; max-width:380px; width:100%; border-radius:4px; padding:0; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+    <!-- Top gold bar -->
+    <div style="height:8px; background:linear-gradient(90deg,#d4af37,#f9e076,#d4af37);"></div>
+    <div style="padding:28px 28px 22px; text-align:center; border:1px solid #eee; margin:12px; border-radius:2px;">
+      <div style="font-size:11px; letter-spacing:3px; color:#999; margin-bottom:12px;">OFFICIAL DOCUMENT</div>
+      <div style="font-size:42px; margin-bottom:8px;">🎂</div>
+      <h2 style="font-family:serif; font-weight:900; font-size:22px; color:#111; margin:0; letter-spacing:1px;">CERTIFICATE</h2>
+      <div style="width:40px; height:2px; background:#111; margin:12px auto;"></div>
+      <p style="font-size:13px; color:#666; margin:16px 0 6px; font-style:italic;">This is to certify that</p>
+      <h1 style="font-family:serif; font-size:34px; margin:0; color:#111; font-weight:400;">Reina</h1>
+      <p style="font-size:13px; color:#444; line-height:1.5; margin:16px 0;">has officially turned</p>
+      <div style="font-size:52px; font-weight:900; color:#ff006e; line-height:1; margin:5px 0;">19</div>
+      <p style="font-size:13px; color:#444; margin-top:4px;">years of pure awesomeness</p>
+      
+      <div style="margin:24px 0 0; padding-top:18px; border-top:1px solid #eee; display:flex; justify-content:space-between; align-items:end; text-align:left;">
+        <div>
+          <div style="font-size:9px; letter-spacing:2px; color:#999;">DATE</div>
+          <div style="font-size:13px; color:#111; font-weight:600;">Sept 4, 2026</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:9px; letter-spacing:2px; color:#999;">APPROVED BY</div>
+          <div style="font-family:cursive; font-size:22px; color:#111; transform:rotate(-3deg);">Lewy</div>
+          <div style="width:80px; height:1px; background:#111; margin-top:2px;"></div>
+        </div>
+      </div>
     </div>
+    <button id="closeCert" style="width:100%; background:#111; color:white; border:none; padding:14px; font-weight:700; font-size:13px; letter-spacing:2px; cursor:pointer;">CLOSE</button>
   </div>
 </div>
 
@@ -326,10 +338,9 @@ const certModal=document.getElementById('certModal');
 const closeCert=document.getElementById('closeCert');
 if(certBtn){ certBtn.onclick=()=>{ certModal.style.display='flex'; }; }
 if(closeCert){ closeCert.onclick=()=>{ certModal.style.display='none'; }; }
-if(certModal){ certModal.onclick=(e)=>{ if(e.target===certModal) certModal.style.display='none'; }; }
 </script>
-
 </body>
+
 
 
 </html>

@@ -30,3 +30,66 @@ footer{text-align:center;padding:28px;background:#160922;color:#bda9c9;font-size
 @media(max-width:560px){.nav{padding:0 20px}.nav-btn{padding:10px 14px}.hero,.section{padding-left:20px;padding-right:20px}.hero h1{font-size:3.6rem}.card-grid,.mission{grid-template-columns:1fr}.quiz-box,.button-lab{padding:24px}.letter-paper{padding:45px 25px}.letter-paper:before{inset:12px}.wax{right:22px;top:22px;width:50px;height:50px}.photo-frame{padding:9px 9px 45px}}
 
 .cursor-glow{position:fixed;width:180px;height:180px;border-radius:50%;pointer-events:none;z-index:0;transform:translate(-50%,-50%);background:radial-gradient(circle,#c77dff1c,transparent 65%);transition:left .08s linear,top .08s linear}
+
+/* ===== FINAL STABILITY FIX ===== */
+
+img {
+  max-width: 100%;
+}
+
+img[src^="assets/"] {
+  display: block;
+}
+
+#videoModal {
+  display: none;
+}
+
+#videoModal.show {
+  display: flex;
+}
+
+#game-area {
+  position: relative;
+}
+
+#playBtn {
+  transition:
+    left 0.15s ease,
+    top 0.15s ease,
+    transform 0.15s ease,
+    scale 0.15s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .hero-photo-wrap {
+    width: 100%;
+  }
+
+  .photo-frame {
+    max-width: 92vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+  }
+
+  nav {
+    display: none;
+  }
+
+  #music-float {
+    top: 78px;
+  }
+
+  #videoModal video {
+    max-height: 75vh;
+  }
+}

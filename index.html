@@ -265,70 +265,10 @@ audio.onended=()=>{ loadTrack(cur+1); audio.play(); };
   <div class="toast" id="toast"></div>
   <script src="script.js"></script>
 
-  <script>
-  // ===== ADDED: Annoying Play Me Logic =====
-  const playBtn=document.getElementById('playBtn');
-  const game=document.getElementById('game-area');
-  const msg=document.getElementById('message');
-  const videoModal=document.getElementById('videoModal');
-  const reinaVideo=document.getElementById('reinaVideo');
-  const closeVideo=document.getElementById('closeVideo');
-  let attempts=0;
-  const maxAttempts=8;
-  const texts=["Can you catch the button? 😏","Oops too slow! 😝","Haha not that easy!","You almost got me!","Why so slow Reina? 😂","Okay okay... 2 more tries!","Awww fine you win! 🥺💖","Last chance!","Playing your surprise... 🎬"];
-  function movePlayBtn(){
-    attempts++;
-    if(attempts < maxAttempts){
-      msg.textContent=texts[attempts]||texts[1];
-      const maxX=game.clientWidth-playBtn.offsetWidth-12;
-      const maxY=game.clientHeight-playBtn.offsetHeight-12;
-      playBtn.style.left=Math.random()*maxX+'px';
-      playBtn.style.top=Math.random()*maxY+'px';
-      playBtn.style.transform='translate(0,0)';
-      playBtn.style.scale=1-attempts*0.06;
-    }else{
-      msg.textContent=texts[8];
-      playBtn.textContent='Okay Play! ▶️';
-      playBtn.style.left='50%'; playBtn.style.top='50%';
-      playBtn.style.transform='translate(-50%,-50%)';
-      playBtn.style.scale='1.25'; playBtn.style.background='#2ec4b6';
-      playBtn.onclick=()=>{videoModal.classList.add('show'); reinaVideo.play();};
-    }
-  }
-  if(playBtn){
-    playBtn.addEventListener('mouseenter',movePlayBtn);
-    playBtn.addEventListener('touchstart',e=>{e.preventDefault(); movePlayBtn();});
-    playBtn.addEventListener('click',e=>{
-      if(attempts < maxAttempts){ e.preventDefault(); movePlayBtn(); }
-      else { videoModal.classList.add('show'); reinaVideo.play(); }
-    });
-  }
-  if(closeVideo){ closeVideo.onclick=()=>{videoModal.classList.remove('show'); reinaVideo.pause();}; }
-  if(videoModal){ videoModal.onclick=e=>{ if(e.target===videoModal){videoModal.classList.remove('show'); reinaVideo.pause();}}; }
-  </script>
-
-
-<script>
-const playBtn=document.getElementById('playBtn');
-const game=document.getElementById('game-area');
-let a=0;
-function makeItPlayable(){
-  playBtn.textContent='Okay Play! ▶️';
-  playBtn.style.left='50%';playBtn.style.top='50%';
-  playBtn.style.transform='translate(-50%,-50%)';
-  playBtn.style.background='#2ec4b6';
   
-}
-function moveBtn(){
-  a++;
-  if(a<7){
-    playBtn.style.left=Math.random()*(game.clientWidth-90)+'px';
-    playBtn.style.top=Math.random()*(game.clientHeight-50)+'px';
-    playBtn.style.transform='none';
-  }else{ makeItPlayable(); }
-}
-playBtn.ontouchstart=function(e){ if(a<7){ e.preventDefault(); moveBtn(); } };
-</script>
+
+
+
 
 
 
@@ -380,7 +320,7 @@ cards.forEach(c=>{c.addEventListener('click',()=>{c.style.background='#fff7d6'; 
 
 <div id="secret-final" style="display:none; text-align:center; margin:40px 20px; animation: pop 0.5s ease;">
   <p style="font-family:Georgia,serif; color:#2d1b4e; font-size:16px; margin-bottom:12px;">You found them all. One more thing...</p>
-  <button id="secretBtn" style="background:linear-gradient(135deg,#2d1b4e,#5a3d8a); color:#f9e076; padding:16px 36px; border:2px solid #d4af37; border-radius:100px; font-weight:800; font-size:15px; cursor:pointer; box-shadow:0 8px 20px rgba(45,27,78,0.3);">🎁 ONE LAST THING →</button>
+  <button id="secretFinalBtn" style="background:linear-gradient(135deg,#2d1b4e,#5a3d8a); color:#f9e076; padding:16px 36px; border:2px solid #d4af37; border-radius:100px; font-weight:800; font-size:15px; cursor:pointer; box-shadow:0 8px 20px rgba(45,27,78,0.3);">🎁 ONE LAST THING →</button>
 </div>
 <style>@keyframes pop{0%{transform:scale(0.8);opacity:0}100%{transform:scale(1);opacity:1}}</style>
 <script>
@@ -398,16 +338,8 @@ cards.forEach((c,i)=>{
     }
   });
 });
-document.getElementById('secretBtn').onclick=()=>{
+document.getElementById('secretFinalBtn').onclick=()=>{
   document.getElementById('certModal').style.display='flex';
-  // confetti
-  const e=new Event('click'); // trigger confetti from cert btn
-  if(window.makeConfetti) window.makeConfetti();
-  const canvas=document.getElementById('confetti-canvas');
-  if(canvas){
-    const evt = new CustomEvent('certOpen');
-    document.dispatchEvent(evt);
-  }
   document.getElementById('certBtn').click();
 };
 })();
